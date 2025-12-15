@@ -6,9 +6,10 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { Text, View } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import "react-native-reanimated";
 import "../global.css";
 
@@ -34,20 +35,12 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack
-        screenOptions={{
-          headerShadowVisible: false,
-          contentStyle: {
-            backgroundColor: "pink",
-          },
-          headerStyle: {
-            backgroundColor: "pink",
-          },
-        }}
-      >
-        <Stack.Screen name="index" options={{ title: "Inicio" }} />s
-      </Stack>
-    </ThemeProvider>
+    <GestureHandlerRootView>
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <View className="bg-light-background dark:bg-dark-background">
+          <Text className={`text-3xl `}>Hola mundo</Text>
+        </View>
+      </ThemeProvider>
+    </GestureHandlerRootView>
   );
 }
