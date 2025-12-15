@@ -1,5 +1,7 @@
 import { useColorScheme } from "@/hooks/use-color-scheme.web";
 import { useThemeColor } from "@/hooks/use-theme-color";
+import ThemedText from "@/presentation/shared/ThemedText";
+import ThemedView from "@/presentation/shared/ThemedView";
 import {
   DarkTheme,
   DefaultTheme,
@@ -8,7 +10,6 @@ import {
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import { Text, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import "react-native-reanimated";
 import "../global.css";
@@ -35,11 +36,11 @@ export default function RootLayout() {
   }
 
   return (
-    <GestureHandlerRootView>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor }}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <View className="bg-light-background dark:bg-dark-background">
-          <Text className={`text-3xl `}>Hola mundo</Text>
-        </View>
+        <ThemedView safe>
+          <ThemedText type="h1">Hola mundo</ThemedText>
+        </ThemedView>
       </ThemeProvider>
     </GestureHandlerRootView>
   );
