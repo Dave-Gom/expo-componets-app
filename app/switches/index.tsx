@@ -1,7 +1,7 @@
 import ThemedCard from "@/presentation/shared/ThemedCard";
+import ThemedSwitch from "@/presentation/shared/ThemedSwitch";
 import ThemedView from "@/presentation/shared/ThemedView";
 import { useState } from "react";
-import { Switch } from "react-native";
 
 const Switches = () => {
   const [state, setState] = useState({
@@ -12,10 +12,8 @@ const Switches = () => {
   return (
     <ThemedView margin>
       <ThemedCard>
-        <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={state.isActive ? "#f5dd4b" : "#f4f3f4"}
-          ios_backgroundColor="#3e3e3e"
+        <ThemedSwitch
+          text="Activo"
           onValueChange={(value) => {
             setState({ ...state, isActive: value });
           }}
