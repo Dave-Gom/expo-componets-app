@@ -27,6 +27,7 @@ const ThemedView = ({
           backgroundColor: bgColor || backgroundColor,
           paddingTop: safe ? safeArea.top : 0,
           paddingBottom: safe ? safeArea.bottom : 0,
+          margin: margin ? 10 : 0,
         },
         style,
       ]}
