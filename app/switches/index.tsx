@@ -17,7 +17,23 @@ const Switches = () => {
           onValueChange={(value) => {
             setState({ ...state, isActive: value });
           }}
+          className="mb-4"
           value={state.isActive}
+        />
+        <ThemedSwitch
+          text="Enojado"
+          onValueChange={(value) => {
+            setState({ ...state, isAngry: value });
+          }}
+          className="mb-4"
+          value={state.isAngry}
+        />
+        <ThemedSwitch
+          text="Feliz"
+          onValueChange={(value) => {
+            setState({ ...state, isHappy: value });
+          }}
+          value={state.isHappy}
         />
       </ThemedCard>
     </ThemedView>
