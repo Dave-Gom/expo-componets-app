@@ -1,28 +1,31 @@
+import { useThemeChangerContext } from "@/presentation/contex/ThemeChangerContext";
 import ThemedCard from "@/presentation/shared/ThemedCard";
 import ThemedSwitch from "@/presentation/shared/ThemedSwitch";
 import ThemedView from "@/presentation/shared/ThemedView";
-import { useColorScheme } from "nativewind";
 import { useState } from "react";
 
 const ThemesScreen = () => {
-  const { colorScheme, setColorScheme } = useColorScheme();
+  const { currentTheme, toggleTheme, isSystemTheme, setSystemTheme } =
+    useThemeChangerContext();
   const [darkModeSetting, setDarkModeSetting] = useState({
-    darkMode: colorScheme === "dark",
+    darkMode: currentTheme === "dark",
     systemMode: false,
   });
 
   const setDarkMode = (value: boolean) => {
-    setColorScheme(value ? "dark" : "light");
+    toggleTheme();
     setDarkModeSetting({
       darkMode: value,
-      systemMode: false,
+      systemMode: isSystemTheme,
     });
   };
 
   const setSystemMode = (value: boolean) => {
-    setColorScheme("system");
+    if (value) {
+      setSystemTheme();
+    }
     setDarkModeSetting({
-      darkMode: colorScheme === "dark",
+      darkMode: darkModeSetting.darkMode,
       systemMode: value,
     });
   };
